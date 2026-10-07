@@ -1,0 +1,271 @@
+:root {
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Color Palette - Deep Teal & Warm Ivory System */
+  --primary: #0B4F4A;           /* Deep Teal */
+  --primary-hover: #083D39;
+  --primary-light: rgba(11, 79, 74, 0.08);
+
+  --secondary: #137C73;         /* Teal */
+  --secondary-hover: #0E625B;
+  --secondary-light: rgba(19, 124, 115, 0.12);
+
+  --ai-mint: #B8F2E6;           /* Mint Highlight */
+  --ai-mint-dark: #128272;
+  --ai-mint-bg: rgba(184, 242, 230, 0.35);
+
+  --bg-warm: #F7F4EA;           /* Warm Ivory Background */
+  --bg-card: #FFFFFF;           /* Pure White Cards */
+  --bg-card-alt: #FAF8F2;
+  --bg-card-hover: #FFFFFF;
+  --bg-sidebar: #0B4F4A;        /* Deep Teal Sidebar */
+  --bg-input: #FFFFFF;
+
+  --accent-coral: #FF7568;      /* Coral Accent */
+  --accent-coral-hover: #E85B4E;
+  --accent-coral-light: rgba(255, 117, 104, 0.15);
+
+  --border-color: rgba(11, 79, 74, 0.12);
+  --border-focus: #137C73;
+  --border-mint: rgba(18, 130, 114, 0.3);
+
+  --text-main: #243331;         /* Charcoal */
+  --text-muted: #536B67;
+  --text-dim: #7F9793;
+  --text-white: #FFFFFF;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  --shadow-card: 0 4px 20px -2px rgba(11, 79, 74, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 12px 32px -4px rgba(11, 79, 74, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 20px rgba(184, 242, 230, 0.6);
+
+  --backdrop-blur: blur(12px);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-warm);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* White Cards with Warm Ivory Borders */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: var(--border-mint);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* Gradient & Highlight Typography */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 60%, var(--accent-coral) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-mint {
+  background: linear-gradient(135deg, #0B4F4A 0%, #137C73 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Interactive Buttons */
+.btn-primary {
+  background: var(--primary);
+  color: var(--text-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 14px rgba(11, 79, 74, 0.2);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(11, 79, 74, 0.3);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--secondary-light);
+  border-color: var(--secondary);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.btn-accent {
+  background: var(--accent-coral);
+  color: var(--text-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 14px rgba(255, 117, 104, 0.3);
+  transition: all 0.25s ease;
+}
+
+.btn-accent:hover {
+  background: var(--accent-coral-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 117, 104, 0.4);
+}
+
+/* Forms & Input Controls */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.input-control {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem 1rem;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.input-control:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(19, 124, 115, 0.15);
+  background: #FFFFFF;
+}
+
+/* Layout Containers */
+.app-container {
+  display: flex;
+  min-height: calc(100vh - 70px);
+  background: var(--bg-warm);
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Micro Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.03); }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+.pulse {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-warm);
+}
+::-webkit-scrollbar-thumb {
+  background: #CBDAD7;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A1B8B4;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 900px) {
+  .app-container {
+    flex-direction: column;
+  }
+  .main-content {
+    padding: 1.25rem;
+  }
+}
