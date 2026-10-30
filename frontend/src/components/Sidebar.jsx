@@ -14,9 +14,11 @@ import {
   ShieldCheck,
   FolderPlus,
   MessageSquareCode,
+  X,
+  Sparkles,
 } from 'lucide-react';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, onClose }) => {
   const { isAdmin } = useContext(AuthContext);
 
   const navItems = [
@@ -37,28 +39,66 @@ const Sidebar = () => {
     navItems.push({ path: '/admin-dashboard', label: 'Admin Dashboard', icon: ShieldCheck });
   }
 
+  const renderNavLinks = () => (
+    <div style={styles.navGroup}>
+      <span style={styles.groupHeader}>CAREER INTELLIGENCE</span>
+      {navItems.map((item) => {
+        const Icon = item.icon;
+        return (
+          <NavLink
+            key={item.path}
+            to={item.path}
+            onClick={() => {
+              if (onClose) onClose();
+            }}
+            style={({ isActive }) => ({
+              ...styles.link,
+              ...(isActive ? styles.activeLink : {}),
+            })}
+          >
+            <Icon size={18} />
+            <span>{item.label}</span>
+          </NavLink>
+        );
+      })}
+    </div>
+  );
+
   return (
-    <aside style={styles.aside}>
-      <div style={styles.navGroup}>
-        <span style={styles.groupHeader}>CAREER INTELLIGENCE</span>
-        {navItems.map((item) => {
-          const Icon = item.icon;
-          return (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              style={({ isActive }) => ({
-                ...styles.link,
-                ...(isActive ? styles.activeLink : {}),
-              })}
-            >
-              <Icon size={18} />
-              <span>{item.label}</span>
-            </NavLink>
-          );
-        })}
+    <>
+      {/* Desktop Sidebar (visible on >= 900px) */}
+      <aside className="desktop-sidebar" style={styles.aside}>
+        {renderNavLinks()}
+      </aside>
+
+      {/* Mobile Drawer Overlay (visible when toggled on < 900px) */}
+      <div
+        className={`mobile-drawer-backdrop ${isOpen ? 'active' : ''}`}
+        onClick={onClose}
+        aria-hidden="true"
+      />
+
+      <div className={`mobile-drawer ${isOpen ? 'active' : ''}`}>
+        <div className="mobile-drawer-header">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Sparkles size={18} color="#137C73" />
+            <span style={{ fontWeight: '800', color: '#0B4F4A', fontSize: '1.05rem' }}>
+              SkillGap <span style={{ color: '#FF7568' }}>AI</span>
+            </span>
+          </div>
+          <button
+            onClick={onClose}
+            style={styles.closeBtn}
+            aria-label="Close navigation menu"
+          >
+            <X size={20} color="#536B67" />
+          </button>
+        </div>
+        <div style={{ padding: '1.25rem 0.85rem' }}>
+          {renderNavLinks()}
+        </div>
       </div>
-    </aside>
+    </>
   );
 };
 
@@ -103,6 +143,16 @@ const styles = {
     color: '#0B4F4A',
     fontWeight: '700',
     boxShadow: '0 2px 8px rgba(184, 242, 230, 0.5)',
+  },
+  closeBtn: {
+    background: 'transparent',
+    border: 'none',
+    padding: '0.4rem',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 };
 

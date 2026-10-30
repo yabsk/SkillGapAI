@@ -214,7 +214,7 @@ const MockInterviewPage = () => {
       {/* Role & Level Setup Panel */}
       {(showConfig || questions.length === 0) && (
         <div className="glass-card" style={styles.controlPanel}>
-          <div className="form-group" style={{ flex: 1.5, minWidth: '220px' }}>
+          <div className="form-group" style={{ flex: '1.5 1 220px', minWidth: 'min(100%, 220px)' }}>
             <label>Target Job Role</label>
             <input
               type="text"
@@ -225,7 +225,7 @@ const MockInterviewPage = () => {
             />
           </div>
 
-          <div className="form-group" style={{ flex: 1, minWidth: '180px' }}>
+          <div className="form-group" style={{ flex: '1 1 180px', minWidth: 'min(100%, 180px)' }}>
             <label>Interview Level</label>
             <select
               className="input-control"
@@ -238,7 +238,7 @@ const MockInterviewPage = () => {
             </select>
           </div>
 
-          <div className="form-group" style={{ flex: 1, minWidth: '180px' }}>
+          <div className="form-group" style={{ flex: '1 1 180px', minWidth: 'min(100%, 180px)' }}>
             <label>Interview Type</label>
             <select
               className="input-control"
@@ -257,7 +257,7 @@ const MockInterviewPage = () => {
               startNewSession();
             }}
             className="btn-primary"
-            style={styles.genBtn}
+            style={{ ...styles.genBtn, flex: '1 1 200px', minWidth: 'min(100%, 200px)' }}
             disabled={loading}
           >
             {loading ? 'Generating 13 Questions...' : <><RefreshCw size={16} /> Start New Session</>}
@@ -672,8 +672,8 @@ const styles = {
   },
   statusBar: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-    gap: '1.25rem',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))',
+    gap: '1rem',
     alignItems: 'center',
     background: '#FFFFFF',
     padding: '1rem 1.25rem',
@@ -732,7 +732,7 @@ const styles = {
     flexDirection: 'column',
     gap: '1.25rem',
     background: '#FFFFFF',
-    padding: '1.5rem',
+    padding: 'clamp(1rem, 3vw, 1.5rem)',
     borderRadius: '12px',
     border: '1px solid rgba(11, 79, 74, 0.1)',
   },
@@ -772,7 +772,7 @@ const styles = {
     fontWeight: '700',
   },
   questionText: {
-    fontSize: '1.3rem',
+    fontSize: 'clamp(1.1rem, 3vw, 1.3rem)',
     fontWeight: '800',
     color: '#0B4F4A',
     lineHeight: 1.4,
@@ -966,8 +966,8 @@ const styles = {
   },
   categoryGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))',
-    gap: '1rem',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 130px), 1fr))',
+    gap: '0.85rem',
   },
   categoryCard: {
     background: '#FFFFFF',
@@ -991,7 +991,7 @@ const styles = {
   },
   reportGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
     gap: '1.25rem',
   },
   reportCard: {

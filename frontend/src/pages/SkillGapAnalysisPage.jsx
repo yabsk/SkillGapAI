@@ -188,8 +188,8 @@ const styles = {
   },
   contentGrid: {
     display: 'grid',
-    gridTemplateColumns: 'minmax(280px, 340px) 1fr',
-    gap: '1.5rem',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+    gap: '1.25rem',
   },
   scoreCard: {
     display: 'flex',
@@ -244,6 +244,8 @@ const styles = {
     background: 'rgba(15, 23, 42, 0.6)',
     borderRadius: '8px',
     border: '1px solid rgba(255, 255, 255, 0.05)',
+    flexWrap: 'wrap',
+    gap: '0.5rem',
   },
   gapInfo: {
     display: 'flex',

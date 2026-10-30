@@ -99,7 +99,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '2rem',
+    padding: 'clamp(1rem, 4vw, 2rem)',
     background: '#F7F4EA',
   },
   card: {

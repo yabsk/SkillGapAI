@@ -200,8 +200,8 @@ const styles = {
   },
   twoColumn: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-    gap: '1.5rem',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+    gap: '1.25rem',
   },
   uploadCard: {
     display: 'flex',
@@ -216,7 +216,7 @@ const styles = {
   dropZone: {
     border: '2px dashed rgba(99, 102, 241, 0.4)',
     borderRadius: '12px',
-    padding: '2.5rem 1.5rem',
+    padding: 'clamp(1.5rem, 4vw, 2.5rem) 1rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -225,6 +225,7 @@ const styles = {
     background: 'rgba(15, 23, 42, 0.4)',
     position: 'relative',
     cursor: 'pointer',
+    textAlign: 'center',
   },
   dropZoneText: {
     fontSize: '0.95rem',

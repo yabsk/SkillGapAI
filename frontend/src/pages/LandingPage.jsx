@@ -160,20 +160,22 @@ const LandingPage = () => {
 
 const styles = {
   container: {
-    padding: '3rem 2rem 5rem 2rem',
+    padding: 'clamp(1.5rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem) 4rem clamp(1rem, 3vw, 2rem)',
     maxWidth: '1280px',
     margin: '0 auto',
     display: 'flex',
     flexDirection: 'column',
-    gap: '5rem',
+    gap: 'clamp(2.5rem, 6vw, 5rem)',
+    width: '100%',
   },
   hero: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     textAlign: 'center',
-    gap: '1.5rem',
-    marginTop: '1rem',
+    gap: '1.25rem',
+    marginTop: '0.5rem',
+    width: '100%',
   },
   badge: {
     display: 'inline-flex',
@@ -189,14 +191,14 @@ const styles = {
     letterSpacing: '0.05em',
   },
   heroTitle: {
-    fontSize: '3.2rem',
+    fontSize: 'clamp(1.85rem, 5.5vw, 3.2rem)',
     fontWeight: '800',
-    lineHeight: 1.15,
+    lineHeight: 1.18,
     maxWidth: '900px',
     color: '#0B4F4A',
   },
   heroSubtitle: {
-    fontSize: '1.1rem',
+    fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)',
     color: '#536B67',
     maxWidth: '750px',
     lineHeight: 1.6,
@@ -205,13 +207,16 @@ const styles = {
     display: 'flex',
     gap: '1rem',
     marginTop: '0.5rem',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    width: '100%',
   },
   previewContainer: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
     gap: '1.25rem',
     width: '100%',
-    marginTop: '2.5rem',
+    marginTop: '2rem',
   },
   previewCard: {
     background: '#FFFFFF',
@@ -272,7 +277,8 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: '3rem',
+    gap: '2.5rem',
+    width: '100%',
   },
   sectionHeader: {
     textAlign: 'center',
@@ -288,14 +294,14 @@ const styles = {
     letterSpacing: '0.08em',
   },
   sectionTitle: {
-    fontSize: '2.2rem',
+    fontSize: 'clamp(1.5rem, 4vw, 2.2rem)',
     fontWeight: '800',
     color: '#0B4F4A',
   },
   journeyGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '1.5rem',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+    gap: '1.25rem',
     width: '100%',
   },
   journeyCard: {
@@ -305,7 +311,7 @@ const styles = {
     gap: '0.75rem',
     background: '#FFFFFF',
     border: '1px solid rgba(11, 79, 74, 0.12)',
-    padding: '1.75rem 1.5rem',
+    padding: '1.5rem 1.25rem',
   },
   stepNumber: {
     position: 'absolute',
@@ -339,11 +345,12 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     gap: '2.5rem',
+    width: '100%',
   },
   grid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-    gap: '1.5rem',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
+    gap: '1.25rem',
     width: '100%',
   },
   featureCard: {

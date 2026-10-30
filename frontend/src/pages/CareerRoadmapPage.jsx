@@ -682,9 +682,10 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '1.25rem 1.5rem',
+    padding: '1rem clamp(0.75rem, 3vw, 1.5rem)',
     background: '#FFFFFF',
     overflowX: 'auto',
+    WebkitOverflowScrolling: 'touch',
     borderRadius: '12px',
     border: '1px solid rgba(11, 79, 74, 0.1)',
   },
@@ -694,7 +695,8 @@ const styles = {
     alignItems: 'center',
     textAlign: 'center',
     gap: '0.25rem',
-    minWidth: '120px',
+    minWidth: '95px',
+    flexShrink: 0,
   },
   stageActiveCircle: {
     width: '32px',
@@ -824,7 +826,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     gap: '1.25rem',
-    padding: '1.75rem',
+    padding: 'clamp(1rem, 3vw, 1.75rem)',
     borderRadius: '14px',
     border: '1px solid rgba(11, 79, 74, 0.12)',
   },
@@ -839,6 +841,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: '1rem',
+    flexWrap: 'wrap',
   },
   checkBtn: {
     background: 'none',
@@ -852,6 +855,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: '0.5rem',
+    flexWrap: 'wrap',
   },
   stepNumBadge: {
     fontSize: '0.72rem',
@@ -904,6 +908,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: '0.4rem',
+    flexWrap: 'wrap',
   },
   whyMattersTitle: {
     fontSize: '0.72rem',
@@ -933,7 +938,7 @@ const styles = {
   },
   resourceGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
     gap: '1rem',
   },
   resourceCard: {

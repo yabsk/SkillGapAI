@@ -43,7 +43,7 @@ const ProjectGeneratorPage = () => {
 
       {/* Control Panel */}
       <div className="glass-card" style={styles.controlPanel}>
-        <div className="form-group" style={{ flex: 1 }}>
+        <div className="form-group" style={{ flex: '1 1 220px', minWidth: 'min(100%, 220px)' }}>
           <label>Target Career Role</label>
           <input
             type="text"
@@ -54,7 +54,7 @@ const ProjectGeneratorPage = () => {
           />
         </div>
 
-        <div className="form-group" style={{ flex: 1 }}>
+        <div className="form-group" style={{ flex: '1 1 220px', minWidth: 'min(100%, 220px)' }}>
           <label>Difficulty / Skill Level</label>
           <select
             className="input-control"
@@ -163,6 +163,8 @@ const styles = {
   genBtn: {
     height: '46px',
     marginBottom: '1.25rem',
+    flex: '1 1 200px',
+    minWidth: 'min(100%, 200px)',
   },
   projectDisplay: {
     display: 'flex',
@@ -188,7 +190,7 @@ const styles = {
     letterSpacing: '0.05em',
   },
   projectTitle: {
-    fontSize: '1.6rem',
+    fontSize: 'clamp(1.25rem, 4vw, 1.6rem)',
     fontWeight: '800',
     color: '#0B4F4A',
     marginTop: '0.25rem',
@@ -208,7 +210,7 @@ const styles = {
   },
   sectionGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
     gap: '1.25rem',
   },
   cardBox: {

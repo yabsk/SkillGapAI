@@ -136,8 +136,8 @@ const styles = {
   },
   grid: {
     display: 'grid',
-    gridTemplateColumns: 'minmax(280px, 340px) 1fr',
-    gap: '1.5rem',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+    gap: 'clamp(1rem, 3vw, 1.5rem)',
   },
   scoreCard: {
     display: 'flex',
@@ -151,21 +151,23 @@ const styles = {
     justifyContent: 'space-around',
     width: '100%',
     paddingTop: '1rem',
-    borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+    borderTop: '1px solid rgba(11, 79, 74, 0.1)',
+    flexWrap: 'wrap',
+    gap: '0.75rem',
   },
   statVal: {
     display: 'block',
     fontSize: '1.4rem',
     fontWeight: '800',
-    color: '#f8fafc',
+    color: '#0B4F4A',
   },
   statLabel: {
     fontSize: '0.75rem',
-    color: '#64748b',
+    color: '#536B67',
   },
   divider: {
     width: '1px',
-    background: 'rgba(255, 255, 255, 0.08)',
+    background: 'rgba(11, 79, 74, 0.12)',
   },
   card: {
     display: 'flex',
@@ -182,9 +184,9 @@ const styles = {
     gap: '0.85rem',
     alignItems: 'flex-start',
     padding: '0.85rem',
-    background: 'rgba(15, 23, 42, 0.5)',
+    background: '#FAF8F2',
     borderRadius: '10px',
-    border: '1px solid rgba(255, 255, 255, 0.05)',
+    border: '1px solid rgba(11, 79, 74, 0.08)',
   },
   iconWrap: {
     width: '32px',
@@ -205,6 +207,8 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: '0.4rem',
   },
   subText: {
     fontSize: '0.78rem',

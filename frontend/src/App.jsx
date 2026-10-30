@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
@@ -26,6 +26,12 @@ import MockInterviewPage from './pages/MockInterviewPage';
 
 const AppLayout = ({ children }) => {
   const { isAuthenticated } = useContext(AuthContext);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
 
   if (!isAuthenticated) {
     return (
@@ -39,9 +45,15 @@ const AppLayout = ({ children }) => {
 
   return (
     <div style={styles.authWrapper}>
-      <Navbar />
+      <Navbar
+        onToggleMobileMenu={() => setIsMobileMenuOpen((prev) => !prev)}
+        isMobileMenuOpen={isMobileMenuOpen}
+      />
       <div className="app-container">
-        <Sidebar />
+        <Sidebar
+          isOpen={isMobileMenuOpen}
+          onClose={() => setIsMobileMenuOpen(false)}
+        />
         <main className="main-content">{children}</main>
       </div>
       <SkillGapCopilot />

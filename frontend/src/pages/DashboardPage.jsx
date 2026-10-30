@@ -290,7 +290,7 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     flexWrap: 'wrap',
-    gap: '1.5rem',
+    gap: '1.25rem',
     background: '#FFFFFF',
     border: '1px solid rgba(11, 79, 74, 0.12)',
     boxShadow: '0 4px 20px rgba(11, 79, 74, 0.05)',
@@ -299,6 +299,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: '1rem',
+    flexWrap: 'wrap',
   },
   avatarBox: {
     width: '56px',
@@ -308,14 +309,16 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    flexShrink: 0,
   },
   nameRow: {
     display: 'flex',
     alignItems: 'center',
     gap: '0.75rem',
+    flexWrap: 'wrap',
   },
   userName: {
-    fontSize: '1.6rem',
+    fontSize: 'clamp(1.3rem, 4vw, 1.6rem)',
     fontWeight: '800',
     color: '#0B4F4A',
   },
@@ -334,8 +337,8 @@ const styles = {
   roleBox: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-end',
-    textAlign: 'right',
+    alignItems: 'flex-start',
+    textAlign: 'left',
   },
   roleHeader: {
     display: 'flex',
@@ -349,7 +352,7 @@ const styles = {
     letterSpacing: '0.05em',
   },
   roleTitle: {
-    fontSize: '1.4rem',
+    fontSize: 'clamp(1.15rem, 3.5vw, 1.4rem)',
     fontWeight: '800',
     color: '#0B4F4A',
   },
@@ -370,6 +373,7 @@ const styles = {
     gap: '0.75rem',
     borderBottom: '1px solid rgba(11, 79, 74, 0.1)',
     paddingBottom: '0.75rem',
+    flexWrap: 'wrap',
   },
   insightsTitle: {
     fontSize: '1.25rem',
@@ -382,7 +386,7 @@ const styles = {
   },
   insightsGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
     gap: '1rem',
   },
   insightItem: {
@@ -417,7 +421,7 @@ const styles = {
   },
   gaugeGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))',
     gap: '1.25rem',
   },
   gaugeCard: {
@@ -464,7 +468,7 @@ const styles = {
   },
   twoColumn: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
     gap: '1.5rem',
   },
   card: {
@@ -491,6 +495,8 @@ const styles = {
     background: '#FAF8F2',
     borderRadius: '8px',
     border: '1px solid rgba(11, 79, 74, 0.08)',
+    flexWrap: 'wrap',
+    gap: '0.5rem',
   },
   gapName: {
     display: 'block',
@@ -505,6 +511,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: '0.4rem',
+    flexWrap: 'wrap',
   },
   prioHigh: {
     padding: '0.15rem 0.5rem',

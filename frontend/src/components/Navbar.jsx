@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import { Sparkles, LogOut, User as UserIcon, Shield, Target } from 'lucide-react';
+import { Sparkles, LogOut, User as UserIcon, Shield, Target, Menu, X } from 'lucide-react';
 
-const Navbar = () => {
+const Navbar = ({ onToggleMobileMenu, isMobileMenuOpen }) => {
   const { user, isAuthenticated, isAdmin, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -13,11 +13,22 @@ const Navbar = () => {
   };
 
   return (
-    <nav style={styles.nav}>
+    <nav style={styles.nav} className="navbar-container">
       <div style={styles.brandContainer}>
+        {isAuthenticated && (
+          <button
+            onClick={onToggleMobileMenu}
+            className="mobile-nav-toggle"
+            aria-label={isMobileMenuOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
+            title="Toggle Navigation Menu"
+          >
+            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        )}
+
         <Link to={isAuthenticated ? '/dashboard' : '/'} style={styles.logoLink}>
           <div style={styles.logoIcon}>
-            <Sparkles size={22} color="#137C73" />
+            <Sparkles size={20} color="#137C73" />
           </div>
           <span style={styles.logoText}>
             SkillGap <span style={styles.logoAccent}>AI</span>
@@ -25,42 +36,45 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <div style={styles.navActions}>
+      <div style={styles.navActions} className="nav-actions">
         {isAuthenticated ? (
           <>
             {user?.targetRole && (
-              <div style={styles.targetBadge}>
-                <Target size={14} color="#137C73" />
-                <span>Target: <strong>{user.targetRole.title || user.targetRole}</strong></span>
+              <div style={styles.targetBadge} className="nav-target-badge">
+                <Target size={13} color="#137C73" />
+                <span style={styles.targetBadgeText}>
+                  {user.targetRole.title || user.targetRole}
+                </span>
               </div>
             )}
 
             {isAdmin && (
-              <span style={styles.adminBadge}>
-                <Shield size={14} /> Admin Mode
+              <span style={styles.adminBadge} className="nav-admin-badge">
+                <Shield size={13} /> Admin
               </span>
             )}
 
-            <div style={styles.userInfo}>
+            <div style={styles.userInfo} className="nav-user-info">
               <div style={styles.avatar}>
-                <UserIcon size={18} color="#FFFFFF" />
+                <UserIcon size={16} color="#FFFFFF" />
               </div>
-              <div style={styles.userText}>
+              <div style={styles.userText} className="nav-user-text">
                 <span style={styles.userName}>{user.name}</span>
-                <span style={styles.userEmail}>{user.email}</span>
+                <span style={styles.userEmail} className="nav-user-email">{user.email}</span>
               </div>
             </div>
 
             <button onClick={handleLogout} className="btn-secondary" style={styles.logoutBtn} title="Logout">
-              <LogOut size={16} /> Logout
+              <LogOut size={15} />
+              <span className="logout-text">Logout</span>
             </button>
           </>
         ) : (
           <div style={styles.guestButtons}>
-            <Link to="/login" className="btn-secondary">
+            <Link to="/login" className="btn-secondary" style={styles.guestBtn}>
               Sign In
             </Link>
-            <Link to="/register" className="btn-primary">
+            <Link to="/register" className="btn-primary" style={styles.guestBtn}>
               Get Started
             </Link>
           </div>
