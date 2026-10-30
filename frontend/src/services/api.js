@@ -1,9 +1,17 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+let rawBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+
+// Trim whitespace and remove trailing slashes
+rawBase = rawBase.trim().replace(/\/+$/, '');
+
+// Ensure /api is appended if omitted by user in deployment environment variables
+if (!rawBase.endsWith('/api')) {
+  rawBase = `${rawBase}/api`;
+}
 
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: rawBase,
 });
 
 // Interceptor to attach Bearer token to requests

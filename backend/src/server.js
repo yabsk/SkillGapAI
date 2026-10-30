@@ -38,41 +38,52 @@ app.use(express.urlencoded({ extended: true }));
 // Serve Uploaded Resume Files
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
-// Register All 10 API Route Groups
-app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api/users', require('./routes/userRoutes'));
-app.use('/api/resumes', require('./routes/resumeRoutes'));
-app.use('/api/job-roles', require('./routes/jobRoleRoutes'));
-app.use('/api/analysis', require('./routes/analysisRoutes'));
-app.use('/api/recommendations', require('./routes/recommendationsRoutes'));
-app.use('/api/roadmap', require('./routes/roadmapRoutes'));
-app.use('/api/resume-evaluation', require('./routes/resumeEvaluationRoutes'));
-app.use('/api/readiness', require('./routes/readinessRoutes'));
-app.use('/api/admin', require('./routes/adminRoutes'));
-app.use('/api/copilot', require('./routes/copilotRoutes'));
-app.use('/api/projects', require('./routes/projectGenRoutes'));
-app.use('/api/interview', require('./routes/interviewRoutes'));
+// Root & Health Check Endpoints
+const healthPayload = {
+  status: 'healthy',
+  system: 'SkillGap AI REST API Server',
+  modules: [
+    'Auth APIs',
+    'User Profile APIs',
+    'NLP Resume Parser',
+    'Semantic Skill Extractor',
+    'Skill Gap Analyzer',
+    'Roadmap Generator',
+    'Recommendation Engine',
+    'Resume Evaluation & ATS Checker',
+    'Job Readiness Score Evaluator',
+    'Admin Management APIs',
+    'Copilot AI Chat',
+    'Mock Interview Simulator',
+    'Project Generator',
+  ],
+  time: new Date().toISOString(),
+};
 
+app.get('/', (req, res) => res.json({ status: 'online', message: 'SkillGap AI REST API is running.', ...healthPayload }));
+app.get('/health', (req, res) => res.json(healthPayload));
+app.get('/api/health', (req, res) => res.json(healthPayload));
 
-// Health Check Route
-app.get('/api/health', (req, res) => {
-  res.json({
-    status: 'healthy',
-    system: 'SkillGap AI REST API Server',
-    modules: [
-      'Auth APIs',
-      'User Profile APIs',
-      'NLP Resume Parser',
-      'Semantic Skill Extractor',
-      'Skill Gap Analyzer',
-      'Roadmap Generator',
-      'Recommendation Engine',
-      'Resume Evaluation & ATS Checker',
-      'Job Readiness Score Evaluator',
-      'Admin Management APIs',
-    ],
-    time: new Date().toISOString(),
-  });
+// Register All API Route Groups under /api and direct alias to prevent 404s
+const apiRoutes = [
+  ['/auth', require('./routes/authRoutes')],
+  ['/users', require('./routes/userRoutes')],
+  ['/resumes', require('./routes/resumeRoutes')],
+  ['/job-roles', require('./routes/jobRoleRoutes')],
+  ['/analysis', require('./routes/analysisRoutes')],
+  ['/recommendations', require('./routes/recommendationsRoutes')],
+  ['/roadmap', require('./routes/roadmapRoutes')],
+  ['/resume-evaluation', require('./routes/resumeEvaluationRoutes')],
+  ['/readiness', require('./routes/readinessRoutes')],
+  ['/admin', require('./routes/adminRoutes')],
+  ['/copilot', require('./routes/copilotRoutes')],
+  ['/projects', require('./routes/projectGenRoutes')],
+  ['/interview', require('./routes/interviewRoutes')],
+];
+
+apiRoutes.forEach(([subPath, router]) => {
+  app.use(`/api${subPath}`, router);
+  app.use(subPath, router); // Handles calls even if client omits /api prefix
 });
 
 // Global Error Handler
