@@ -10,7 +10,10 @@ export const getJobRoleById = async (id) => {
   return response.data;
 };
 
-export const selectTargetRole = async (roleId) => {
-  const response = await api.put('/job-roles/select-target', { roleId });
+export const selectTargetRole = async (roleId, roleTitle) => {
+  const payload = typeof roleId === 'object' && roleId !== null
+    ? { roleId: roleId._id, roleTitle: roleId.title }
+    : { roleId, roleTitle };
+  const response = await api.put('/job-roles/select-target', payload);
   return response.data;
 };
